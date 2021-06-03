@@ -2,7 +2,7 @@
 
 # Overview
 
-Small Python GUI for extracting HSV values from an image. Run the script, load an image, select pixels. HSV values distributions will appear in a violin chart. Choose best the min/max values of each channel for building your filter.
+Small Python GUI for extracting HSV values from an image. Run the script, load an image, select pixels. HSV values distributions will appear in a violin chart. Choose the best min/max values of each channel for building your filter.
 
 HSV color channel values have the following ranges, which are the same as in OpenCV. [1]
 
