@@ -17,34 +17,39 @@ V -> 0-255 <br>
 Python 3 <br>
 matplotlib <br>
 numpy <br>
+opencv <br>
 
 # Install & Tutorial
 
 1 - Clone this repository
 
-    mkdir /color_signature_tool
-    cd /color_signature_tool
     git clone https://github.com/martin0004/color_signature_tool.git
+    cd color_signature_tool
 
-2 - Run the tool.
+2 - Install packages. Make sure to install [Anaconda](https://docs.anaconda.com/anaconda/install/index.html) first
 
-    python3 color_signature_tool.py
+    conda create --name color-signature-tool --channel conda-forge python=3.9 numpy matplotlib opencv
+    conda activate color-signature-tool
 
-3 - A small GUI will open. Click on `Import File` and browse for your image.
+3 - Run the tool.
+
+    python color_signature_tool.py
+
+4 - A small GUI will open. Click on `Import File` and browse for your image.
 
 <img src="images/tutorial/tutorial_01.jpg" alt="2D grid" width="600"/>
 
-4 - Click on pixels for which you want to know HSV values. As you click on pixels, the violin chart on the right will populate. Larger sections of a violin indicate more pixels with this value. In this example I am clicking on the duckies.
+5 - Click on pixels for which you want to know HSV values. As you click on pixels, the violin chart on the right will populate. Larger sections of a violin indicate more pixels with this value. In this example I am clicking on the duckies.
 
 <img src="images/tutorial/tutorial_02.jpg" alt="2D grid" width="600"/>
 
-5 - If you have a 2nd images of the same object (say in different lighting conditions), import it and keep clicking on pixels. HSV values will be added to the ones which were already extracted.
+6 - If you have a 2nd images of the same object (say in different lighting conditions), import it and keep clicking on pixels. HSV values will be added to the ones which were already extracted.
 
 <img src="images/tutorial/tutorial_03.jpg" alt="2D grid" width="600"/>
 
-6 - Then use engineering judgment to decide which range of values you want to use in your filter. In the example above, most of the V channnel values seem to be between 210 and 255. Values below 210 are most likely noise (or maybe one of the pixels I clicked on was just outside a duckie, so from a different color). Therefore I only use range 210-255 for channel V in my filter.
+7 - Then use engineering judgment to decide which range of values you want to use in your filter. In the example above, most of the V channnel values seem to be between 210 and 255. Values below 210 are most likely noise (or maybe one of the pixels I clicked on was just outside a duckie, so from a different color). Therefore I only use range 210-255 for channel V in my filter.
 
-7 - Finally, build a filter with your favorite image library. The example below uses the Python cv2 module.
+8 - Finally, build a filter with your favorite image library. The example below uses the Python cv2 module.
 
     $ cat filter_example.py
 
@@ -78,9 +83,7 @@ numpy <br>
 
     $ python3 filter_example.py
 
-
 <img src="images/tutorial/tutorial_04.jpg" alt="2D grid" width="600"/>
-
 
 # Possible improvements
 
@@ -98,7 +101,3 @@ numpy <br>
 # References
 
 [1] Educba, Introduction to OpenCV HSV range, https://www.educba.com/opencv-hsv-range/
-
-
-
-
